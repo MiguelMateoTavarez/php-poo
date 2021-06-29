@@ -2,7 +2,7 @@
 
 namespace Lufia;
 
-use WarCraft\Armor;
+use Lufia\Interfaces\Armor;
 
 abstract class Unit
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace WarCraft;
+namespace Lufia\Interfaces;
 
 interface Armor
 {

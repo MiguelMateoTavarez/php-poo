@@ -1,8 +1,8 @@
 <?php
 
-namespace Lufia;
+namespace Lufia\Armors;
 
-use WarCraft\Armor;
+use Lufia\Interfaces\Armor;
 
 class BronzeArmor implements Armor
 {
