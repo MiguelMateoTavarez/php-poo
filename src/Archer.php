@@ -2,17 +2,12 @@
 
 namespace Lufia;
 
+use Lufia\Weapons\Bow;
+
 class Archer extends Unit
 {
-
-    protected $damage = 20;
-
-    public function attack(Unit $opponent)
+    public function __construct($name, Bow $bow)
     {
-        show(
-            "<p>{$this->name} dispara una flecha a {$opponent->getName()}</p>"
-        );
-
-        $opponent->takeDamage($this->damage);
+        parent::__construct($name, $bow);
     }
 }

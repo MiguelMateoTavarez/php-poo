@@ -6,13 +6,20 @@ use Lufia\Interfaces\Armor;
 
 abstract class Unit
 {
-    protected $hp;
+    protected $hp = 40;
     protected $name;
+    protected $armor;
+    protected $weapon;
 
-    public function __construct($name, $hp = 40)
+    public function __construct($name, Weapon $weapon = null)
     {
-        $this->hp = $hp;
         $this->name = $name;
+        $this->weapon = $weapon;
+    }
+
+    public function setWeapon(Weapon $weapon)
+    {
+        $this->weapon = $weapon;
     }
 
     public function getName()
@@ -48,7 +55,12 @@ abstract class Unit
         );
     }
 
-    abstract public function attack(Unit $opponent);
+    public function attack(Unit $opponent)
+    {
+        show($this->weapon->getDescription($this, $opponent));
+
+        $opponent->takeDamage($this->weapon->getDamage());
+    }
 
     public function takeDamage($damage)
     {
