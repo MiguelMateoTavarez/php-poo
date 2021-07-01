@@ -82,6 +82,11 @@ abstract class Unit
 
     protected function absorbDamage($damage)
     {
+        if($this->armor)
+        {
+            $damage = $this->armor->absorbDamage($damage);
+        }
+        
         return $damage;
     }
 }
