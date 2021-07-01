@@ -11,9 +11,10 @@ $cursed_armor = new Armors\CursedArmor();
 $basic_sword = new Weapons\BasicSword();
 $basic_bow = new Weapons\BasicBow();
 $cross_bow = new Weapons\CrossBow();
+$fire_bow = new Weapons\FireBow();
 
-$sander = new Archer('Sander', $basic_bow);
-$azura = new Soldier('Azura', $basic_sword);
+$sander = new Unit('Sander', $fire_bow);
+$azura = new Unit('Azura', $basic_sword);
 
 $sander->move('el norte');
 $sander->attack($azura);

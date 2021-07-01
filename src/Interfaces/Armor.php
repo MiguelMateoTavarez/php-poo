@@ -2,7 +2,9 @@
 
 namespace Lufia\Interfaces;
 
+use Lufia\Attack;
+
 interface Armor
 {
-    public function absorbDamage($damage);
+    public function absorbDamage(Attack $attack);
 }

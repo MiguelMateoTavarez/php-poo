@@ -3,11 +3,16 @@
 namespace Lufia\Armors;
 
 use Lufia\Interfaces\Armor;
+use Lufia\Attack;
 
 class CursedArmor implements Armor
 {
-    public function absorbDamage($damage)
+    public function absorbDamage(Attack $attack)
     {
-        return $damage * 2;
+        if($attack->isPhysical()) {
+            return $attack->getdamage() * 2;
+        }
+        
+        return $attack->getDamage();
     }
 }

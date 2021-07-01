@@ -4,7 +4,7 @@ namespace Lufia;
 
 use Lufia\Interfaces\Armor;
 
-abstract class Unit
+class Unit
 {
     protected $hp = 40;
     protected $name;
@@ -20,6 +20,11 @@ abstract class Unit
     public function setWeapon(Weapon $weapon)
     {
         $this->weapon = $weapon;
+    }
+
+    public function setArmor(Armor $armor = null)
+    {
+        $this->armor = $armor;
     }
 
     public function getName()
@@ -43,11 +48,6 @@ abstract class Unit
         );
     }
 
-    public function setArmor(Armor $armor = null)
-    {
-        $this->armor = $armor;
-    }
-
     public function move($direction)
     {
         show(
@@ -57,14 +57,16 @@ abstract class Unit
 
     public function attack(Unit $opponent)
     {
-        show($this->weapon->getDescription($this, $opponent));
+        $attack = $this->weapon->createAttack();
 
-        $opponent->takeDamage($this->weapon->getDamage());
+        show($attack->getDescription($this, $opponent));
+
+        $opponent->takeDamage($attack);
     }
 
-    public function takeDamage($damage)
+    public function takeDamage(Attack $attack)
     {
-        $this->setHp($this->hp - $this->absorbDamage($damage));
+        $this->setHp($this->hp - $this->absorbDamage($attack));
 
         if ($this->hp <= 0) {
             $this->die();
@@ -80,13 +82,12 @@ abstract class Unit
         exit();
     }
 
-    protected function absorbDamage($damage)
+    protected function absorbDamage(Attack $attack)
     {
-        if($this->armor)
-        {
-            $damage = $this->armor->absorbDamage($damage);
+        if ($this->armor) {
+            return $this->armor->absorbDamage($attack);
         }
-        
-        return $damage;
+
+        return $attack->getDamage();
     }
 }

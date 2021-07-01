@@ -3,11 +3,16 @@
 namespace Lufia\Armors;
 
 use Lufia\Interfaces\Armor;
+use Lufia\Attack;
 
 class SilverArmor implements Armor
 {
-    public function absorbDamage($damage)
+    public function absorbDamage(Attack $attack)
     {
-        return $damage / 3;
+        if($attack->isPhysical()) {
+            return $attack->getdamage() / 3;
+        }
+        
+        return $attack->getDamage();
     }
 }

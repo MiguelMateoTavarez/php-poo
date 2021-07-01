@@ -2,15 +2,12 @@
 
 namespace Lufia\Weapons;
 
-use Lufia\Weapons\Bow;
-use Lufia\Unit;
+use Lufia\Weapon;
 
-class CrossBow extends Bow
+class CrossBow extends Weapon
 {
     protected $damage = 40;
+    protected $magical = false;
+    protected $description = ':unit dispara un virote a :opponent';
 
-    public function getDescription(Unit $attacker, Unit $opponent)
-    {
-        show("{$attacker->getName()} dispara una flecha a {$opponent->getName()}");
-    }
 }
