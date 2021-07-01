@@ -5,14 +5,10 @@ namespace Lufia\Armors;
 use Lufia\Interfaces\Armor;
 use Lufia\Attack;
 
-class BronzeArmor implements Armor
+class BronzeArmor extends Armor
 {
     public function absorbDamage(Attack $attack)
     {
-        if($attack->isPhysical()) {
-            return $attack->getdamage() / 2;
-        }
-
         return $attack->getDamage();
     }
 }

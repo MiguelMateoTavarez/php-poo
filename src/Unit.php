@@ -2,6 +2,7 @@
 
 namespace Lufia;
 
+use Lufia\Armors\MissingArmor;
 use Lufia\Interfaces\Armor;
 
 class Unit
@@ -15,6 +16,7 @@ class Unit
     {
         $this->name = $name;
         $this->weapon = $weapon;
+        $this->armor = new MissingArmor();
     }
 
     public function setWeapon(Weapon $weapon)
@@ -66,7 +68,7 @@ class Unit
 
     public function takeDamage(Attack $attack)
     {
-        $this->setHp($this->hp - $this->absorbDamage($attack));
+        $this->setHp($this->hp - $this->armor->absorbDamage($attack));
 
         if ($this->hp <= 0) {
             $this->die();
@@ -80,14 +82,5 @@ class Unit
         );
 
         exit();
-    }
-
-    protected function absorbDamage(Attack $attack)
-    {
-        if ($this->armor) {
-            return $this->armor->absorbDamage($attack);
-        }
-
-        return $attack->getDamage();
     }
 }
