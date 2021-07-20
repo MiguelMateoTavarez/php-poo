@@ -22,8 +22,11 @@ $basic_bow = new Weapons\BasicBow();
 $cross_bow = new Weapons\CrossBow();
 $fire_bow = new Weapons\FireBow();
 
-$sander = new Unit('Sander', $fire_bow);
-$azura = new Unit('Azura', $basic_sword);
+$sander = Unit::createSoldier('Sander')
+                ->setArmor($silver_armor)
+                ->setWeapon($basic_sword);
+
+$azura = new Unit('Azura', $fire_bow);
 
 $sander->move('el norte');
 $sander->attack($azura);

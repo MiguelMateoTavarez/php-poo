@@ -9,6 +9,6 @@ class CursedArmor extends Armor
 {
     public function absorbDamage(Attack $attack)
     {
-        return $attack->getDamage();
+        return $attack->getDamage() * 2;
     }
 }

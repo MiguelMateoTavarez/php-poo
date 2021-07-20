@@ -8,6 +8,7 @@ abstract class Armor
 {
     public function absorbDamage(Attack $attack)
     {
+
         if($attack->isMagical()) {
             return $this->absorbPMagicalDamage($attack);
         }
