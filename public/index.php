@@ -4,6 +4,15 @@ namespace Lufia;
 
 require_once '../Vendor/autoload.php';
 
+Translator::set([
+
+    'BasicBowAttack' => ':unit dispara una flecha a :opponent',
+    'BasicSwordAttack' => ':unit ataca con la espada a :opponent',
+    'CrossBowAttack' => ':unit dispara un virote a :opponent',
+    'FireBowAttack' => ':unit dispara una flecha a :opponent',
+
+]);
+
 $bronze_armor = new Armors\BronzeArmor();
 $silver_armor = new Armors\SilverArmor();
 $cursed_armor = new Armors\CursedArmor();
