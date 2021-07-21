@@ -4,6 +4,7 @@ namespace Lufia;
 
 use Lufia\Armors\MissingArmor;
 use Lufia\Interfaces\Armor;
+use Lufia\FileLogger;
 
 class Unit
 {
@@ -56,15 +57,15 @@ class Unit
             $hp = 0;
         }
         $this->hp = $hp;
-        show(
+        Log::info(
             "{$this->name} ahora tiene {$this->hp} puntos de vida"
         );
     }
 
     public function move($direction)
     {
-        show(
-            "<p>{$this->name} camina hacia $direction</p>"
+        Log::info(
+            "{$this->name} camina hacia $direction"
         );
     }
 
@@ -72,7 +73,7 @@ class Unit
     {
         $attack = $this->weapon->createAttack();
 
-        show($attack->getDescription($this, $opponent));
+        Log::info($attack->getDescription($this, $opponent));
 
         $opponent->takeDamage($attack);
     }
@@ -88,7 +89,7 @@ class Unit
 
     public function die()
     {
-        show(
+        Log::info(
             "<p>{$this->name} muere</p>"
         );
 

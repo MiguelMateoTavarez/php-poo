@@ -6,9 +6,9 @@ class Translator
 {
     protected static $messages = [];
 
-    public static function set(array $messages)
+    public static function set(Object $messages)
     {
-        static::$messages = $messages;
+        static::$messages = $messages::dialogue();
     }
 
     public static function get($key, array $params = array())

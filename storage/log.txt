@@ -1,0 +1,14 @@
+(2021-07-21 06:58:49) Sander camina hacia el norte
+(2021-07-21 06:58:49) Sander ataca con la espada a Azura
+(2021-07-21 06:58:49) Azura ahora tiene 20 puntos de vida
+(2021-07-21 06:58:49) Sander ataca con la espada a Azura
+(2021-07-21 06:58:49) Azura ahora tiene 13.333333333333 puntos de vida
+(2021-07-21 06:58:49) Azura dispara una flecha a Sander
+(2021-07-21 06:58:49) Sander ahora tiene 30 puntos de vida
+(2021-07-21 07:06:18) Sander camina hacia el norte
+(2021-07-21 07:06:18) Sander ataca con la espada a Azura
+(2021-07-21 07:06:18) Azura ahora tiene 20 puntos de vida
+(2021-07-21 07:06:18) Sander ataca con la espada a Azura
+(2021-07-21 07:06:18) Azura ahora tiene 13.333333333333 puntos de vida
+(2021-07-21 07:06:18) Azura dispara una flecha a Sander
+(2021-07-21 07:06:18) Sander ahora tiene 30 puntos de vida

@@ -4,14 +4,9 @@ namespace Lufia;
 
 require_once '../Vendor/autoload.php';
 
-Translator::set([
+Translator::set(new Dialogues());
 
-    'BasicBowAttack' => ':unit dispara una flecha a :opponent',
-    'BasicSwordAttack' => ':unit ataca con la espada a :opponent',
-    'CrossBowAttack' => ':unit dispara un virote a :opponent',
-    'FireBowAttack' => ':unit dispara una flecha a :opponent',
-
-]);
+Log::setLogger(new HtmlLogger());
 
 $bronze_armor = new Armors\BronzeArmor();
 $silver_armor = new Armors\SilverArmor();
@@ -26,7 +21,8 @@ $sander = Unit::createSoldier('Sander')
                 ->setArmor($silver_armor)
                 ->setWeapon($basic_sword);
 
-$azura = new Unit('Azura', $fire_bow);
+$azura = Unit::createSoldier('Azura')
+                ->setWeapon($fire_bow);
 
 $sander->move('el norte');
 $sander->attack($azura);
