@@ -8,6 +8,7 @@ use Lufia\FileLogger;
 
 class Unit
 {
+    const MAX_DAMAGE = 100;
     protected $hp = 40;
     protected $name;
     protected $armor;
@@ -23,7 +24,7 @@ class Unit
     public static function createSoldier($name)
     {
         $soldier = new Unit($name);
-        
+
         return $soldier;
     }
 
@@ -51,17 +52,6 @@ class Unit
         return $this->hp;
     }
 
-    private function setHp($hp)
-    {
-        if ($hp < 0) {
-            $hp = 0;
-        }
-        $this->hp = $hp;
-        Log::info(
-            "{$this->name} ahora tiene {$this->hp} puntos de vida"
-        );
-    }
-
     public function move($direction)
     {
         Log::info(
@@ -80,11 +70,26 @@ class Unit
 
     public function takeDamage(Attack $attack)
     {
-        $this->setHp($this->hp - $this->armor->absorbDamage($attack));
+        $this->setHp(
+            $this->armor->absorbDamage($attack)
+        );
+
+        Log::info(
+            "{$this->name} ahora tiene {$this->hp} puntos de vida"
+        );
 
         if ($this->hp <= 0) {
             $this->die();
         }
+    }
+
+    protected function setHp($damage)
+    {
+        if ($damage > static::MAX_DAMAGE) {
+            $damage = static::MAX_DAMAGE;
+        }
+
+        $this->hp = $this->hp - $damage;
     }
 
     public function die()
