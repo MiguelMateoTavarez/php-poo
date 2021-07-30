@@ -4,7 +4,9 @@ use Lufia\User;
 
 require_once '../vendor/autoload.php';
 
-$user = new User([
+$user = new User();
+
+$user->fill([
     'first_name' => 'Miguel',
     'last_name' => 'Mateo',
 ]);
