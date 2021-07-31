@@ -1,27 +1,37 @@
 <?php
 
+use Lufia\HtmlNode;
 use Lufia\User;
 
 require_once '../vendor/autoload.php';
 
-$user = new User();
+// $node = (new HtmlNode('textarea', 'Lufia'))
+//         ->name('content');
 
-$user->fill([
-    'first_name' => 'Miguel',
-    'last_name' => 'Mateo',
-]);
+$node = HtmlNode::textarea('Lufia')
+    ->name('content')
+    ->id('contenido');
 
-$user->nickname = 'Sander';
+echo $node->render();
 
-unset($user->nickname);
+// $user = new User();
 
-echo "<p>
-        Bienvenido 
-            {$user->first_name} 
-            {$user->last_name} 
-    </p>";
+// $user->fill([
+//     'first_name' => 'Miguel',
+//     'last_name' => 'Mateo',
+// ]);
+
+// $user->nickname = 'Sander';
+
+// unset($user->nickname);
+
+// echo "<p>
+//         Bienvenido 
+//             {$user->first_name} 
+//             {$user->last_name} 
+//     </p>";
     
-if (isset($user->nickname)) {
-    echo "<p>Nickname: {$user->nickname}</p>";
-}
+// if (isset($user->nickname)) {
+//     echo "<p>Nickname: {$user->nickname}</p>";
+// }
 
