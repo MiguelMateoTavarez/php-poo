@@ -17,6 +17,11 @@ class Lunch implements IteratorAggregate, Countable
         $this->food = $food;
     }
 
+    public function filter($callback)
+    {
+        return new static (array_filter($this->food, $callback));
+    }
+
     public function __clone()
     {
         $this->original = false;
