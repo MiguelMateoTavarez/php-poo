@@ -25,6 +25,16 @@ class HtmlNode
         return $this->attributes[$name] ?? $default;
     }
 
+    public function __sleep()
+    {
+        return ['attributes'];
+    }
+
+    public function __wakeup()
+    {
+        return $this->attributes;
+    }
+
     public function __toString()
     {
         return $this->render();
