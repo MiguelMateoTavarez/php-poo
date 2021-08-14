@@ -24,16 +24,10 @@ $joanie = new User(['name' => 'Joanie']);
 $haley = new User(['name' => 'Haley']);
 
 //Lunch
-$lunchBox = new Lunch(['Sandwich']);
-$lunchBox2 = clone($lunchBox);
-
+$lunchBox = new Lunch(['Sandwich', 'Papas', 'Jugo de naranja', 'Manzana']);
 
 //Has lunch
 $joanie->setLunch(clone($lunchBox));
 
-$haley->setLunch(clone($lunchBox));
-
 //Action
-$joanie->eat();
-
-$haley->eat();
+$joanie->eatMeal();

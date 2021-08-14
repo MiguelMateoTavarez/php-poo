@@ -2,7 +2,12 @@
 
 namespace Lufia;
 
-class Lunch
+use ArrayIterator;
+use Countable;
+use Iterator;
+use IteratorAggregate;
+
+class Lunch implements IteratorAggregate, Countable
 {
     protected $food = [];
     protected $original = true;
@@ -25,5 +30,15 @@ class Lunch
     public function isEmpty()
     {
         return empty($this->food);
+    }
+
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->food);
+    }
+
+    public function count()
+    {
+        return count($this->food);
     }
 }
